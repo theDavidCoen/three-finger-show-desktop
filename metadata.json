@@ -1,0 +1,8 @@
+{
+  "uuid": "three-finger-show-desktop@theDavidCoen.github.io",
+  "name": "Three Finger Show Desktop",
+  "description": "Show the desktop with a three-finger touchpad swipe down on GNOME 50 (Wayland). Does not replace GNOME overview gestures: three-finger swipe up still opens the overview. No panel icon or Quick Settings entry.",
+  "version": 3,
+  "shell-version": ["50"],
+  "url": "https://github.com/theDavidCoen/three-finger-show-desktop"
+}
