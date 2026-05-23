@@ -164,16 +164,23 @@ const TouchpadSwipeDownObserver = GObject.registerClass(
             this._savedWindows = [];
             this._showingDesktop = false;
         }
+
+        /** Undo show-desktop state when the extension is disabled. */
+        resetShowDesktop() {
+            if (this._showingDesktop)
+                this._restoreWindows();
+            this._resetTracking();
+        }
     },
 );
 
 export default class ThreeFingerShowDesktopExtension extends Extension {
     enable() {
         this._gesture = new TouchpadSwipeDownObserver();
-        log('Three Finger Show Desktop: enabled (additive 3-finger swipe down)');
     }
 
     disable() {
+        this._gesture?.resetShowDesktop();
         this._gesture?.destroy();
         this._gesture = null;
     }

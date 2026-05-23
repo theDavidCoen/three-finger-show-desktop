@@ -10,6 +10,7 @@ rm -f "${OUT}"/*.zip
 
 gnome-extensions pack "${ROOT}" \
   --extra-source=LICENSE \
+  --extra-source=COPYING \
   --out-dir="${OUT}" \
   --force
 

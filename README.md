@@ -7,7 +7,7 @@ GNOME Shell extension for **GNOME 50** (Wayland). Adds a touchpad gesture that G
 | **3 fingers, swipe down** (on the desktop) | Show desktop (minimize all windows on the current workspace) |
 | **3 fingers, swipe down** again | Restore the windows that were minimized |
 
-**3-finger swipe up** is unchanged and still opens the overview, as in stock GNOME.
+**3-finger swipe up** is unchanged and still opens the overview, as in stock GNOME. The extension only observes touchpad events and never blocks GNOME’s built-in gestures.
 
 The extension is **invisible**: no top-bar icon and no Quick Settings toggle.
 
