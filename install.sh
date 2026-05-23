@@ -8,6 +8,9 @@ DEST="${HOME}/.local/share/gnome-shell/extensions/${UUID}"
 
 echo "Installing ${UUID}"
 
+# Remove legacy local UUID from earlier development builds.
+rm -rf "${HOME}/.local/share/gnome-shell/extensions/three-finger-show-desktop@local"
+
 rm -rf "${DEST}"
 mkdir -p "${DEST}"
 
