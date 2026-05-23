@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Install extension files and try to reload GNOME Shell.
+set -euo pipefail
+
+UUID="three-finger-show-desktop@theDavidCoen.github.io"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+"${SCRIPT_DIR}/install.sh"
+
+echo ""
+echo "Trying to restart GNOME Shell so the running session loads the new files…"
+
+_restart_shell() {
+  local code="$1"
+  local out
+  out="$(busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s "$code" 2>/dev/null || true)"
+  [[ "$out" == *"true"* ]]
+}
+
+restarted=false
+if _restart_shell 'global.reexec_self();'; then
+  restarted=true
+  echo "Shell restart via global.reexec_self() — wait ~5s for the desktop to return."
+elif _restart_shell 'Meta.restart("Three Finger Show Desktop");'; then
+  restarted=true
+  echo "Shell restart via Meta.restart() — wait ~5s."
+else
+  echo "Automatic Shell restart is blocked on this session."
+fi
+
+echo ""
+if [[ "$restarted" == true ]]; then
+  sleep 5
+  gnome-extensions enable "${UUID}" 2>/dev/null || true
+else
+  echo "Log out and back in, then run:"
+  echo "  gnome-extensions enable ${UUID}"
+fi
+
+echo ""
+gnome-extensions info "${UUID}" 2>/dev/null || true
