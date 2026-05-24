@@ -43,7 +43,7 @@ Search for **Three Finger Show Desktop** on https://extensions.gnome.org/ (after
 
 The extension **only observes** touchpad events and never blocks GNOME’s built-in gestures. A **3-finger swipe up** still opens the overview and app grid as usual.
 
-A **3-finger swipe down** on the desktop (finger motion from the top of the touchpad toward the bottom, ~100 px) minimizes all windows on the current workspace without the usual minimize animation. Another downward swipe restores them.
+A **3-finger swipe down** on the desktop animates windows toward the screen edges in sync with your fingers (similar to GNOME’s overview gesture). Release before finishing to cancel; complete the swipe to show the desktop. Another downward swipe restores the windows.
 
 ## Uninstall
 
